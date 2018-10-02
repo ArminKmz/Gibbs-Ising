@@ -33,7 +33,6 @@ class Ising:
         self.W = W
         self.u = u
         self.d = W.shape[0]
-        self.neighbours = [[j for j in range(self.d) if W[i, j]] for i in range(self.d)]
 
     def conditonal(self, i, X):
         '''
@@ -42,7 +41,7 @@ class Ising:
         def sigmoid(x):
             return 1. / (1 + np.exp(-x))
         tmp = self.W[i, :].dot(X)
-        return sigmoid(2 * tmp + self.u[i])
+        return sigmoid(2 * (tmp + self.u[i]))
 
     def energy(self, X):
         return -X.dot(self.W).dot(X) - X.dot(self.u)
