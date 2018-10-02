@@ -19,7 +19,7 @@ def get_sample(W, u, n):
 def gibbs_sampling(model, n):
     X = np.array([+1 if np.random.rand() < .5 else -1 for i in range(model.d)])
     samples = [np.copy(X)]
-    for i in range(2*n + 100):
+    for i in range(2*n + 99):
         for j in range(model.d):
             p = model.conditonal(j, X)
             X[j] = +1 if np.random.rand() < p else -1
